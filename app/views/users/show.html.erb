@@ -1,1 +1,6 @@
 <%= @user.name %>
+<ul>
+<% @user.events.each do |ev| %>
+ <li> <%= "#{ev.event_title} will occur at #{ev.date}" %></li>
+ <% end %>
+</ul>

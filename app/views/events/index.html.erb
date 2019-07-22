@@ -1,0 +1,4 @@
+<% @events.each do |ev| %>
+    <h4><%= "Event #{ev.event_title} will occur at #{ev.date}" %> 
+    <%= link_to "Show Event!", event_path(ev.id) %> </h4>
+<% end %>

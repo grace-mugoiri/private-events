@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :events,  only: [:index, :show, :create, :destroy]
   get 'static_pages/home'
   get 'sessions/new'
   resources :users

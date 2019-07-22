@@ -1,2 +1,14 @@
 <h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% if logged_in? %>
+  <%= form_for(@event) do |f| %>
+
+    <%= f.label :event_title %>
+    <%= f.text_field :event_title %>
+
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+
+    <%= f.submit "Create", class: "btn btn-primary" %>
+
+  <% end %>
+<% end %>
