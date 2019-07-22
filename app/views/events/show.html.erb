@@ -1,2 +1,8 @@
 <h3><%= "Event #{@event.event_title} will occur at #{@event.date}" %> </h3>
 <h5><%="Created by #{@event.creator.name}"%></h5>
+<h2>People who are attending: </h2>
+<ul>
+<% @event.attendees.each do |att|%>
+    <li><%= att.name %></li>
+    <% end %>
+</ul>
