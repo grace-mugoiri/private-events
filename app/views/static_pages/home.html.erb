@@ -1,6 +1,7 @@
 <h1>StaticPages#home</h1>
 <% if logged_in? %>
   <%= form_for(@event) do |f| %>
+  <%= render 'layouts/error_messages', object: f.object %>
 
     <%= f.label :event_title %>
     <%= f.text_field :event_title %>

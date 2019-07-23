@@ -16,7 +16,8 @@ class EventsController < ApplicationController
       flash[:success] = "Event created!"
       redirect_to root_url
     else
-        render 'static_pages/home'
+        flash[:danger] = "Please fill Both title and date"
+        redirect_to root_url
     end
   end
 

@@ -1,5 +1,4 @@
-names = ["teddy","mary","emre","jose","carlos" ]
-
-    names.each do |name|
+  20.times do
+    name  = Faker::Name.name
     User.create!(name:  name)
   end

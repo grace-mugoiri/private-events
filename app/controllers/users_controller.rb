@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       log_in user
       redirect_to user
     else
-      render "signup"
+      flash.now[:danger] = "Please add your name"
+      render 'sessions/new'
     end
   end
   private

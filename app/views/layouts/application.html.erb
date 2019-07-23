@@ -12,6 +12,7 @@
   <body>
   <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+
     <%= link_to "Private Events", root_path %>
     <% if logged_in? %>
       <% name = current_user.name %>
@@ -35,6 +36,9 @@
     </nav>
   </div>
 </header>
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
     <%= yield %>
   </body>
 </html>
