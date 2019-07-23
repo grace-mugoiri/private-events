@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @event  = current_user.events.build
       #@feed_items = current_user.feed.paginate(page: params[:page])
+      @users = User.where.not(id: @current_user.id)
     end
   end
 end
