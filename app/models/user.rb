@@ -6,16 +6,20 @@ class User < ApplicationRecord
 
     def upcoming_events
         @future = []
-        self.events_attended.each do |ev|
-         @future << ev if ev.date > Time.now
+        if self.events_attended.any?
+          self.events_attended.each do |ev|
+            @future << ev if ev.date > Time.now
+          end
         end
         @future
     end
     
     def past_events
         @past = []
-        self.events_attended.each do |ev|
-         @past << ev if ev.date <= Time.now
+        if self.events_attended.any?
+          self.events_attended.each do |ev|
+            @past << ev if ev.date <= Time.now
+          end
         end
         @past
     end

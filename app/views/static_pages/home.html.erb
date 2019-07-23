@@ -14,12 +14,8 @@
     <%= f.label 'invite attendees' %>
     <% @users.each do |user| %>
       <div id="row">
-        <div id="check_cell">
           <%= check_box_tag 'attendees[]', user.id %>
-        </div>
-        <div id="name_cell">
-          <h5><%= user.name %></h5>
-        </div>
+          <h5 style="display: inline"><%= user.name %></h5>
       </div>
     <% end %>
     <%= hidden_field_tag 'attendees[]', '0' %>
