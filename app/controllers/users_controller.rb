@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @upcoming_events = @user.upcoming_events
+    @past_events = @user.past_events
   end
 
   def create
@@ -15,10 +17,13 @@ class UsersController < ApplicationController
       render "signup"
     end
   end
+  private
 
   def user_params
     params.require(:user).permit(:name)
   end
+
+  
 end
 
 
