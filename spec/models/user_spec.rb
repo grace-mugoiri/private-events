@@ -17,8 +17,8 @@ RSpec.describe User, type: :model do
 
   it "Is destroying related events along with the user" do
     user = User.new(name:"Cenk")
+    user.save
     user.events << Event.new(event_title:"TestEvent", date: Time.now)
-    delete user_path(@user)
-    expect(Event.first).to be_nil
+    expect { user.destroy }.to change { Event.count }.by(-1)
   end
 end
