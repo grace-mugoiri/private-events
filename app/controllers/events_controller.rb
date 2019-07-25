@@ -14,7 +14,7 @@ class EventsController < ApplicationController
         EventAttendance.create(attendee: user.to_i, attended_event: @event.id )}
       end
       flash[:success] = "Event created!"
-      redirect_to root_url
+      redirect_to @event
     else
         flash[:danger] = "Please fill Both title and date"
         redirect_to root_url

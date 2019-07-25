@@ -21,4 +21,12 @@ RSpec.describe User, type: :model do
     user.events << Event.new(event_title:"TestEvent", date: Time.now)
     expect { user.destroy }.to change { Event.count }.by(-1)
   end
+
+  it "Runs the through relationship correctly" do
+    user = User.new(name:"Cenk")
+    user.save
+    user.events << Event.new(event_title:"TestEvent", date: Time.now)
+    expect { EventAttendance.create(attendee: user.id, attended_event:Event.first.id) }
+                                        .to change { user.events_attended.count }.by(1)
+  end
 end
