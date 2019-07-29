@@ -1,0 +1,26 @@
+<h1>StaticPages#home</h1>
+<% if logged_in? %>
+  <%= form_for(@event) do |f| %>
+  <%= render 'layouts/error_messages', object: f.object %>
+
+    <%= f.label :event_title %>
+    <%= f.text_field :event_title %>
+
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+
+    <%= f.submit "Create", class: "btn btn-primary" %>
+
+    <div class="right_box" style="width:40%;">
+    <%= f.label 'invite attendees' %>
+    <% @users.each do |user| %>
+      <div id="row">
+          <%= check_box_tag 'attendees[]', user.id %>
+          <h5 style="display: inline"><%= user.name %></h5>
+      </div>
+    <% end %>
+    <%= hidden_field_tag 'attendees[]', '0' %>
+  </div>
+
+  <% end %>
+<% end %>

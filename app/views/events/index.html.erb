@@ -1,0 +1,11 @@
+<h2> Future Events </h2>
+<% @ev_future.each do |ev| %>
+    <h4><%= "Event #{ev.event_title} will occur at #{ev.date}" %> 
+    <%= link_to "Show Event!", event_path(ev.id) %> </h4>
+<% end %>
+
+<h2> Past Events </h2>
+<% @ev_past.each do |ev| %>
+    <h4><%= "Event #{ev.event_title} occured at #{ev.date}" %> 
+    <%= link_to "Show Event!", event_path(ev.id) %> </h4>
+<% end %>

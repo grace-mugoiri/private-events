@@ -10,6 +10,35 @@
   </head>
 
   <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+
+    <%= link_to "Private Events", root_path %>
+    <% if logged_in? %>
+      <% name = current_user.name %>
+      <%= link_to "#{name}", user_path(User.find(current_user.id)) %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+    
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Events", events_path %></li>
+      </ul>
+      <%else%>
+      <li><%= link_to "Sign Up", signup_path %></li>
+      <li><%= link_to "Log In", login_path %></li>
+    
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Events", events_path %></li>
+      </ul>
+      <%end%>
+    </nav>
+  </div>
+</header>
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
     <%= yield %>
   </body>
 </html>

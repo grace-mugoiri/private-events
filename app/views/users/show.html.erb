@@ -1,0 +1,21 @@
+<%= @user.name %>
+<h3> The Events Created By <%="#{@user.name}"%> </h3>
+<ul>
+<% @user.events.each do |ev| %>
+ <li> <%= "#{ev.event_title} at #{ev.date}" %></li>
+ <% end %>
+ </ul>
+ <h3> <%="#{@user.name.upcase}"%> is Invited To Theese Events: </h3>
+ <ul>
+ <h4> Upcoming Events </h4>
+ <% @upcoming_events.each do |ev| %>
+    <li> <%= "#{ev.event_title} will occur at #{ev.date}" %></li>
+<% end %>
+</ul>
+
+<ul>
+ <h4> Past Events </h4>
+ <% @past_events.each do |ev| %>
+    <li> <%= "#{ev.event_title} occured at #{ev.date}" %></li>
+<% end %>
+</ul>
